@@ -31,6 +31,8 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework
             container.RegisterTransient<IModelConfiguration, RandomizationEntityConfiguration>();
             container.RegisterTransient<IModelConfiguration, RoleConfiguration>();
             container.RegisterTransient<IModelConfiguration, UserConfiguration>();
+
+            container.RegisterTransient<IDbInitializer, DbInitalizer>();
         }
 
         private static DbContextOptions<DatabaseContext> BuildOptions(IContext context)

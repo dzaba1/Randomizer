@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.Contracts\Dzaba.Randomizer.DataAccess.Contracts.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework\Dzaba.Randomizer.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.Utils\Dzaba.Randomizer.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
