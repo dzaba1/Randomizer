@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.DataAccess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.Utils", "Src\Dzaba.Randomizer.Utils\Dzaba.Randomizer.Utils.csproj", "{43937C65-42C2-4AF0-B0D8-9260CEB82984}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.DataAccess.EntityFramework", "Src\Dzaba.Randomizer.DataAccess.EntityFramework\Dzaba.Randomizer.DataAccess.EntityFramework.csproj", "{9FDB746C-2186-47D5-B56C-C12C9B5B29EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{43937C65-42C2-4AF0-B0D8-9260CEB82984}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43937C65-42C2-4AF0-B0D8-9260CEB82984}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43937C65-42C2-4AF0-B0D8-9260CEB82984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FDB746C-2186-47D5-B56C-C12C9B5B29EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FDB746C-2186-47D5-B56C-C12C9B5B29EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FDB746C-2186-47D5-B56C-C12C9B5B29EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FDB746C-2186-47D5-B56C-C12C9B5B29EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
