@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Dzaba.Randomizer.DataAccess.Contracts.Model
 {
     [Table("Groups")]
-    public class Group
+    public class Group : INamedEntity<int>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

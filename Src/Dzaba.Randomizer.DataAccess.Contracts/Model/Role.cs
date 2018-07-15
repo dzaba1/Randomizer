@@ -2,7 +2,7 @@
 
 namespace Dzaba.Randomizer.DataAccess.Contracts.Model
 {
-    public class Role : IdentityRole<long>
+    public class Role : IdentityRole<long>, INamedEntity<long>
     {
     }
 }

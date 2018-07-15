@@ -6,8 +6,8 @@
 
         public string Name { get; set; }
 
-        public NamedNavigation<int> Groups { get; set; }
+        public NamedNavigation<int>[] Groups { get; set; }
 
-        public NamedNavigation<long> Users { get; set; }
+        public NamedNavigation<long>[] Users { get; set; }
     }
 }
