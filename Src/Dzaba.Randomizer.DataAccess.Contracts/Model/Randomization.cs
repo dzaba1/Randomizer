@@ -22,6 +22,6 @@ namespace Dzaba.Randomizer.DataAccess.Contracts.Model
 
         public virtual Entity Winner { get; set; }
 
-        public virtual ICollection<Entity> Entites { get; set; }
+        public virtual ICollection<RandomizationEntity> Entites { get; set; }
     }
 }
