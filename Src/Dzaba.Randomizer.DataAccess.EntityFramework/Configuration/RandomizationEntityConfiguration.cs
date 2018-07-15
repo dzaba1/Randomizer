@@ -11,6 +11,8 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Configuration
         {
             Require.NotNull(builder, nameof(builder));
 
+            builder.HasKey(p => new { p.EntityId, p.RandomizationId });
+
             builder.HasOne(p => p.Entity)
                 .WithMany(p => p.Randomizations)
                 .HasForeignKey(p => p.EntityId)
