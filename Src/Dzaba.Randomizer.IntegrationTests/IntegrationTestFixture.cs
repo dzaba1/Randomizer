@@ -1,5 +1,7 @@
-﻿using Ninject;
+﻿using Dzaba.Randomizer.DataAccess.Contracts;
+using Ninject;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Dzaba.Randomizer.IntegrationTests
 {
@@ -23,6 +25,12 @@ namespace Dzaba.Randomizer.IntegrationTests
         protected T CreateSut()
         {
             return Container.Get<T>();
+        }
+
+        protected async Task InitializeDbAsync()
+        {
+            var sut = Container.Get<IDbInitializer>();
+            await sut.InitializeAsync();
         }
     }
 }

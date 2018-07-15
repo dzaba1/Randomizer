@@ -10,8 +10,7 @@ namespace Dzaba.Randomizer.IntegrationTests
         [Test]
         public async Task InitializeAsync_WhenCalled_ThenItMakesADb()
         {
-            var sut = CreateSut();
-            await sut.InitializeAsync();
+            await InitializeDbAsync();
         }
     }
 }

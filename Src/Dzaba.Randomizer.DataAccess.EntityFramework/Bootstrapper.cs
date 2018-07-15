@@ -1,5 +1,7 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts;
+using Dzaba.Randomizer.DataAccess.Contracts.Dal;
 using Dzaba.Randomizer.DataAccess.EntityFramework.Configuration;
+using Dzaba.Randomizer.DataAccess.EntityFramework.Dal;
 using Dzaba.Randomizer.Utils;
 using Microsoft.EntityFrameworkCore;
 using Ninject;
@@ -33,6 +35,7 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework
             container.RegisterTransient<IModelConfiguration, UserConfiguration>();
 
             container.RegisterTransient<IDbInitializer, DbInitalizer>();
+            container.RegisterTransient<IEnvironmentDal, EnvironmentDal>();
         }
 
         private static DbContextOptions<DatabaseContext> BuildOptions(IContext context)
