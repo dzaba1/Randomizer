@@ -1,5 +1,6 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts.Dal;
 using FluentAssertions;
+using Ninject;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,12 +15,15 @@ namespace Dzaba.Randomizer.IntegrationTests
         {
             await InitializeDbAsync();
 
+            var userDal = Container.Get<IUserDal>();
+            var creatorId = await userDal.CreateAsync("Test", "aaa");
+
             var sut = CreateSut();
 
             var ids = new List<int>();
             for (int i = 0; i < 4; i++)
             {
-                var id = await sut.Create(i.ToString(), 1);
+                var id = await sut.Create(i.ToString(), creatorId);
                 ids.Add(id);
             }
 
@@ -30,7 +34,9 @@ namespace Dzaba.Randomizer.IntegrationTests
             {
                 var entity = await sut.GetAsync(id);
                 entity.Id.Should().Be(id);
-                entity.Name.Should().Be(id.ToString());
+                entity.Name.Should().NotBeNullOrWhiteSpace();
+                entity.Users.Length.Should().Be(1);
+                entity.Users[0].Id.Should().Be(creatorId);
             }
         }
     }

@@ -36,6 +36,7 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework
 
             container.Kernel.RegisterTransient<IDbInitializer, DbInitalizer>();
             container.Kernel.RegisterTransient<IEnvironmentDal, EnvironmentDal>();
+            container.Kernel.RegisterTransient<IUserDal, UserDal>();
         }
 
         private static void OptionsHandler(IKernel container, DbContextOptionsBuilder builder)

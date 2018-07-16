@@ -23,6 +23,8 @@ namespace Dzaba.Randomizer.WebApi.Core
 
         private static void RegisterWebApi(this Containers container)
         {
+            container.Kernel.RegisterSingletonInstance<IServiceProvider>(container.Kernel);
+
             container.ServiceCollection.AddMvc();
         }
     }
