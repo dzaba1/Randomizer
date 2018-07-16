@@ -10,17 +10,19 @@ namespace Dzaba.Randomizer.WebApi.Core
     {
         public static IKernel CreateContainer()
         {
-            var container = new StandardKernel();
+            var container = new Containers();
             container.RegisterEntityFrameworkDataAccess();
             container.RegisterSqlite();
             container.RegisterWebApi();
 
-            return container;
+            container.ServiceCollection.CopyTo(container.Kernel);
+
+            return container.Kernel;
         }
 
-        private static void RegisterWebApi(this IKernel container)
+        private static void RegisterWebApi(this Containers container)
         {
-            container.RegisterSingletonInstance<IServiceProvider>(container);
+            container.Kernel.RegisterSingletonInstance<IServiceProvider>(container.Kernel);
         }
     }
 }

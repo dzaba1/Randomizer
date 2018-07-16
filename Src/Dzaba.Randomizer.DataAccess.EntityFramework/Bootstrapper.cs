@@ -4,51 +4,41 @@ using Dzaba.Randomizer.DataAccess.EntityFramework.Configuration;
 using Dzaba.Randomizer.DataAccess.EntityFramework.Dal;
 using Dzaba.Randomizer.Utils;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Ninject;
-using Ninject.Activation;
 
 namespace Dzaba.Randomizer.DataAccess.EntityFramework
 {
     public static class Bootstrapper
     {
-        public static void RegisterEntityFrameworkDataAccess(this IKernel container)
+        public static void RegisterEntityFrameworkDataAccess(this Containers container)
         {
             Require.NotNull(container, nameof(container));
 
-            container.Bind<DatabaseContext>()
-                .ToSelf()
-                .InTransientScope();
+            container.ServiceCollection.AddDbContext<DatabaseContext>(b => OptionsHandler(container.Kernel, b), ServiceLifetime.Transient, ServiceLifetime.Singleton);
 
-            container.Bind<DbContextOptions<DatabaseContext>>()
-                .ToMethod(BuildOptions)
-                .InSingletonScope();
+            container.Kernel.RegisterFactoryMethod<DatabaseContext>();
 
-            container.RegisterFactoryMethod<DatabaseContext>();
+            container.Kernel.RegisterTransient<IModelConfiguration, EntityModelConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, EnvironmentConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, EnvironmentUserConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, GroupConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, RandomizationConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, RandomizationEntityConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, RoleConfiguration>();
+            container.Kernel.RegisterTransient<IModelConfiguration, UserConfiguration>();
 
-            container.RegisterTransient<IModelConfiguration, EntityModelConfiguration>();
-            container.RegisterTransient<IModelConfiguration, EnvironmentConfiguration>();
-            container.RegisterTransient<IModelConfiguration, EnvironmentUserConfiguration>();
-            container.RegisterTransient<IModelConfiguration, GroupConfiguration>();
-            container.RegisterTransient<IModelConfiguration, RandomizationConfiguration>();
-            container.RegisterTransient<IModelConfiguration, RandomizationEntityConfiguration>();
-            container.RegisterTransient<IModelConfiguration, RoleConfiguration>();
-            container.RegisterTransient<IModelConfiguration, UserConfiguration>();
-
-            container.RegisterTransient<IDbInitializer, DbInitalizer>();
-            container.RegisterTransient<IEnvironmentDal, EnvironmentDal>();
+            container.Kernel.RegisterTransient<IDbInitializer, DbInitalizer>();
+            container.Kernel.RegisterTransient<IEnvironmentDal, EnvironmentDal>();
         }
 
-        private static DbContextOptions<DatabaseContext> BuildOptions(IContext context)
+        private static void OptionsHandler(IKernel container, DbContextOptionsBuilder builder)
         {
-            var builder = new DbContextOptionsBuilder<DatabaseContext>();
-
-            var provider = context.Kernel.Get<IEntityFrameworkProvider>();
-            var connectionStringProvider = context.Kernel.Get<IConnectionStringProvider>();
+            var provider = container.Get<IEntityFrameworkProvider>();
+            var connectionStringProvider = container.Get<IConnectionStringProvider>();
 
             builder.UseLazyLoadingProxies();
             provider.Register(connectionStringProvider.GetConnectionString(), builder);
-
-            return builder.Options;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Ninject;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Ninject;
+using Ninject.Syntax;
 using System;
 
 namespace Dzaba.Randomizer.Utils
@@ -36,6 +38,56 @@ namespace Dzaba.Randomizer.Utils
             Require.NotNull(instance, nameof(instance));
 
             container.Bind<T>().ToConstant(instance).InSingletonScope();
+        }
+
+        public static void CopyTo(this IServiceCollection serviceCollection, IKernel container)
+        {
+            Require.NotNull(serviceCollection, nameof(serviceCollection));
+            Require.NotNull(container, nameof(container));
+
+            foreach (var descriptor in serviceCollection)
+            {
+                if (descriptor.ImplementationInstance != null)
+                {
+                    var bind = container.Bind(descriptor.ServiceType)
+                        .ToConstant(descriptor.ImplementationInstance);
+
+                    SetLifetime(bind, descriptor.Lifetime);
+                }
+
+                if (descriptor.ImplementationFactory != null)
+                {
+                    var bind = container.Bind(descriptor.ServiceType)
+                        .ToMethod(c => descriptor.ImplementationFactory(c.Kernel));
+
+                    SetLifetime(bind, descriptor.Lifetime);
+                }
+
+                if (descriptor.ImplementationType != null)
+                {
+                    var bind = container.Bind(descriptor.ServiceType)
+                        .To(descriptor.ImplementationType);
+
+                    SetLifetime(bind, descriptor.Lifetime);
+                }
+            }
+        }
+
+        private static void SetLifetime(IBindingWhenInNamedWithOrOnSyntax<object> bind, ServiceLifetime lifetime)
+        {
+            switch (lifetime)
+            {
+                case ServiceLifetime.Transient:
+                    bind.InTransientScope();
+                    break;
+                case ServiceLifetime.Scoped:
+                    bind.InThreadScope();
+                    break;
+                case ServiceLifetime.Singleton:
+                    bind.InSingletonScope();
+                    break;
+                default: throw new ArgumentException($"Unknown value of lifetime: {lifetime}", nameof(lifetime));
+            }
         }
     }
 }
