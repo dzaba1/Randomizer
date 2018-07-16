@@ -2,9 +2,6 @@
 using Dzaba.Randomizer.DataAccess.Contracts.Model;
 using Dzaba.Randomizer.Utils;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
@@ -38,7 +35,7 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
             }
             else
             {
-                throw new Exception();
+                throw new IdentityException(result.Errors);
             }
         }
     }

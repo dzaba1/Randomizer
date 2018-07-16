@@ -1,6 +1,5 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts.Dal;
 using FluentAssertions;
-using Ninject;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,8 +12,7 @@ namespace Dzaba.Randomizer.IntegrationTests
         [Test]
         public async Task Create_WhenEntitiesAreCreated_ThenThoseCanBeAccessed()
         {
-            var userDal = Container.Get<IUserDal>();
-            var creatorId = await userDal.CreateAsync("Test", "aaa");
+            var creatorId = await CreateTestUserAsync();
 
             var sut = CreateSut();
 
