@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dzaba.Randomizer.Contracts\Dzaba.Randomizer.Contracts.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.Contracts\Dzaba.Randomizer.DataAccess.Contracts.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework\Dzaba.Randomizer.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.Utils\Dzaba.Randomizer.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

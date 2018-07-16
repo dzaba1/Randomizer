@@ -275,10 +275,17 @@
       <Project>{43937c65-42c2-4af0-b0d8-9260ceb82984}</Project>
       <Name>Dzaba.Randomizer.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dzaba.Randomizer.WebApi.Core\Dzaba.Randomizer.WebApi.Core.csproj">
+      <Project>{6aa619ca-0b10-4924-b046-fcccc3877bb1}</Project>
+      <Name>Dzaba.Randomizer.WebApi.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -29,5 +29,13 @@ namespace Dzaba.Randomizer.Utils
                 .ToMethod(c => () => c.Kernel.Get<T>())
                 .InTransientScope();
         }
+
+        public static void RegisterSingletonInstance<T>(this IKernel container, T instance)
+        {
+            Require.NotNull(container, nameof(container));
+            Require.NotNull(instance, nameof(instance));
+
+            container.Bind<T>().ToConstant(instance).InSingletonScope();
+        }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts;
-using Dzaba.Randomizer.DataAccess.EntityFramework;
-using Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite;
 using Dzaba.Randomizer.Utils;
 using Ninject;
 
@@ -10,9 +8,7 @@ namespace Dzaba.Randomizer.IntegrationTests
     {
         public static IKernel CreateContainer()
         {
-            var container = new StandardKernel();
-            container.RegisterEntityFrameworkDataAccess();
-            container.RegisterSqlite();
+            var container = WebApi.Core.Bootstrapper.CreateContainer();
             container.RegisterIntegrationTests();
 
             return container;

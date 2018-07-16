@@ -9,11 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.Utils", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.DataAccess.EntityFramework", "Src\Dzaba.Randomizer.DataAccess.EntityFramework\Dzaba.Randomizer.DataAccess.EntityFramework.csproj", "{9FDB746C-2186-47D5-B56C-C12C9B5B29EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite", "Src\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite.csproj", "{D037B0D1-991B-4AAA-AF3A-9AC0F87A40B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite", "Src\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite.csproj", "{D037B0D1-991B-4AAA-AF3A-9AC0F87A40B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.IntegrationTests", "Src\Dzaba.Randomizer.IntegrationTests\Dzaba.Randomizer.IntegrationTests.csproj", "{06BE3EBA-CDC0-4BC7-86D0-52C5E83B01B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.Contracts", "Src\Dzaba.Randomizer.Contracts\Dzaba.Randomizer.Contracts.csproj", "{4A5FC180-8044-4B6B-A84E-1C8FB682A3A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.Contracts", "Src\Dzaba.Randomizer.Contracts\Dzaba.Randomizer.Contracts.csproj", "{4A5FC180-8044-4B6B-A84E-1C8FB682A3A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.WebApi.Core", "Src\Dzaba.Randomizer.WebApi.Core\Dzaba.Randomizer.WebApi.Core.csproj", "{6AA619CA-0B10-4924-B046-FCCCC3877BB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.WebApi", "Src\Dzaba.Randomizer.WebApi\Dzaba.Randomizer.WebApi.csproj", "{E6A1A494-423B-423A-A5CC-541C81EF9E1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{4A5FC180-8044-4B6B-A84E-1C8FB682A3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A5FC180-8044-4B6B-A84E-1C8FB682A3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A5FC180-8044-4B6B-A84E-1C8FB682A3A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA619CA-0B10-4924-B046-FCCCC3877BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA619CA-0B10-4924-B046-FCCCC3877BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA619CA-0B10-4924-B046-FCCCC3877BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA619CA-0B10-4924-B046-FCCCC3877BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\bin\Debug\WebApi</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\bin\Release\WebApi</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dzaba.Randomizer.Contracts\Dzaba.Randomizer.Contracts.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.Contracts\Dzaba.Randomizer.DataAccess.Contracts.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework\Dzaba.Randomizer.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.Utils\Dzaba.Randomizer.Utils.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.WebApi.Core\Dzaba.Randomizer.WebApi.Core.csproj" />
+  </ItemGroup>
+
+</Project>
