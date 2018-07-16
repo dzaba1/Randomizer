@@ -13,8 +13,6 @@ namespace Dzaba.Randomizer.IntegrationTests
         [Test]
         public async Task Create_WhenEntitiesAreCreated_ThenThoseCanBeAccessed()
         {
-            await InitializeDbAsync();
-
             var userDal = Container.Get<IUserDal>();
             var creatorId = await userDal.CreateAsync("Test", "aaa");
 

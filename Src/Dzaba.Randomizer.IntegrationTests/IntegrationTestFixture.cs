@@ -10,10 +10,11 @@ namespace Dzaba.Randomizer.IntegrationTests
         protected IKernel Container { get; private set; }
 
         [SetUp]
-        public void Setup()
+        public async Task Setup()
         {
             DbUtils.Delete();
             Container = Bootstrapper.CreateContainer();
+            await InitializeDbAsync();
         }
 
         [TearDown]

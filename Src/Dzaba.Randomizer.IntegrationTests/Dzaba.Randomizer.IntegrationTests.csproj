@@ -459,7 +459,6 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ConnectionStringProvider.cs" />
-    <Compile Include="DbInitalizerTests.cs" />
     <Compile Include="DbUtils.cs" />
     <Compile Include="EnvironmentDalTests.cs" />
     <Compile Include="IntegrationTestFixture.cs" />
