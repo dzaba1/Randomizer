@@ -1,8 +1,10 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts;
 using Dzaba.Randomizer.DataAccess.Contracts.Dal;
+using Dzaba.Randomizer.DataAccess.Contracts.Model;
 using Dzaba.Randomizer.DataAccess.EntityFramework.Configuration;
 using Dzaba.Randomizer.DataAccess.EntityFramework.Dal;
 using Dzaba.Randomizer.Utils;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject;
@@ -18,6 +20,10 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework
             container.ServiceCollection.AddDbContext<DatabaseContext>(b => OptionsHandler(container.Kernel, b), ServiceLifetime.Transient, ServiceLifetime.Singleton);
 
             container.Kernel.RegisterFactoryMethod<DatabaseContext>();
+
+            container.ServiceCollection.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<DatabaseContext>()
+                .AddDefaultTokenProviders();
 
             container.Kernel.RegisterTransient<IModelConfiguration, EntityModelConfiguration>();
             container.Kernel.RegisterTransient<IModelConfiguration, EnvironmentConfiguration>();
