@@ -21,6 +21,7 @@ namespace Dzaba.Randomizer.IntegrationTests
         [TearDown]
         public void Cleanup()
         {
+            Container.Dispose();
             DbUtils.Delete();
         }
 
