@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Require } from '../utils/require';
+import { Require } from '../../utils/require';
 
 @Injectable({
   providedIn: 'root'
