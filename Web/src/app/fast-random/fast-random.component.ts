@@ -19,4 +19,8 @@ export class FastRandomComponent implements OnInit {
     this.items.push(this.newValue);
     this.newValue = '';
   }
+
+  public remove(index: number) {
+    this.items.splice(index, 1);
+  }
 }

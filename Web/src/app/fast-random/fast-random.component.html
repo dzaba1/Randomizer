@@ -4,15 +4,27 @@
       <mat-form-field>
         <input matInput [(ngModel)]="newValue" placeholder="Add something">
       </mat-form-field>
-      <button mat-button (click)="add()">Add</button>
+      <button mat-button (click)="add()" [disabled]="newValue == null || newValue === ''">Add</button>
     </div>
 
     <mat-card>
       <mat-card-title>Items</mat-card-title>
       <mat-card-content>
         <mat-selection-list>
-          <mat-list-option *ngFor="let item of items">
-            {{item}}
+          <mat-list-option *ngFor="let item of items; index as i">
+            <div>
+              {{item}}
+              <span>
+                <button mat-button (click)="remove(i)">Remove</button>
+              </span>
+            </div>
+            <!-- <div class="clearfix">
+              <span>{{item}}</span>
+              
+              <span class="float-right">
+                <button mat-button (click)="add()">Remove</button>
+              </span>
+            </div> -->
           </mat-list-option>
         </mat-selection-list>
       </mat-card-content>
