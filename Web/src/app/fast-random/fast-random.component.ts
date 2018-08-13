@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FastRandomComponent implements OnInit {
 
+  public items = new Array<string>();
+  public newValue = '';
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  public add() {
+    this.items.push(this.newValue);
+    this.newValue = '';
+  }
 }

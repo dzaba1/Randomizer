@@ -2,14 +2,21 @@
   <div class="col-md-3">
     <div class="d-block">
       <mat-form-field>
-        <input matInput placeholder="Add something">
+        <input matInput [(ngModel)]="newValue" placeholder="Add something">
       </mat-form-field>
-      <button mat-button>Add</button>
+      <button mat-button (click)="add()">Add</button>
     </div>
 
-    <mat-selection-list #items>
-
-    </mat-selection-list>
+    <mat-card>
+      <mat-card-title>Items</mat-card-title>
+      <mat-card-content>
+        <mat-selection-list>
+          <mat-list-option *ngFor="let item of items">
+            {{item}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-card-content>
+    </mat-card>
   </div>
   <div class="col-md-9">
 
