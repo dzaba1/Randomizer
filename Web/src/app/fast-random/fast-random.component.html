@@ -1,10 +1,12 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="d-block">
       <mat-form-field>
         <input matInput [(ngModel)]="newValue" placeholder="Add something">
       </mat-form-field>
-      <button mat-button (click)="add()" [disabled]="newValue == null || newValue === ''">Add</button>
+      <button mat-icon-button (click)="add()" [disabled]="newValue == null || newValue === ''">
+        <mat-icon>add_circle</mat-icon>
+      </button>
     </div>
 
     <mat-card>
@@ -15,7 +17,9 @@
             <div>
               {{item}}
               <span>
-                <button mat-button (click)="remove(i)">Remove</button>
+                <button mat-icon-button (click)="remove(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
               </span>
             </div>
             <!-- <div class="clearfix">
@@ -30,7 +34,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="col-md-9">
+  <div class="col-md-8">
 
   </div>
 </div>
