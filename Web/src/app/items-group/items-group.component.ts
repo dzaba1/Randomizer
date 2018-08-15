@@ -3,6 +3,7 @@ import { CheckBoxViewModel } from '../model/checkBoxViewModel';
 import { SelectableItem } from '../model/selectableItem';
 import { MatSelectionListChange } from '@angular/material/list';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Require } from '../../utils/require';
 
 @Component({
   selector: 'app-items-group',
@@ -72,9 +73,17 @@ export class ItemsGroupComponent implements OnInit {
   }
 
   public add(value: string) {
+    Require.notNull(value, 'value');
+
     const viewModel = new SelectableItem();
     viewModel.isSelected = true;
     viewModel.name = value;
     this.itemsViewModel.push(viewModel);
+  }
+
+  public get selectedItems(): string[] {
+    return this.itemsViewModel
+      .filter(i => i.isSelected)
+      .map(i => i.name);
   }
 }
