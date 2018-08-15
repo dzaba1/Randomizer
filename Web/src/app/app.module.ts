@@ -9,12 +9,14 @@ import { RandomService } from './services/random.service';
 import { AppMaterialsModule } from './app-materials.module';
 import { ItemsGroupComponent } from './items-group/items-group.component';
 import { DateTimeService } from './services/date-time.service';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FastRandomComponent,
-    ItemsGroupComponent
+    ItemsGroupComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
