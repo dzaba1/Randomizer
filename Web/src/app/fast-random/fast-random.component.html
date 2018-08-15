@@ -9,33 +9,7 @@
       </button>
     </div>
 
-    <mat-card>
-      <mat-card-title>
-        <div>
-          <span>Items</span>
-          <span class="float-right mt-1">
-            <mat-checkbox [(ngModel)]="selectAll.value" 
-              [(indeterminate)]="selectAll.indeterminate"
-              [disabled]="items == null || items.length === 0"
-              (change)="onSelectAllChange($event)"></mat-checkbox>
-          </span>
-        </div>
-      </mat-card-title>
-      <mat-card-content>
-        <mat-selection-list (selectionChange)="onItemSelectionChanged($event)">
-          <mat-list-option *ngFor="let item of items; index as i" [selected]="item.isSelected" [value]="i">
-            <div>
-              <span>{{item.name}}</span>
-              <span>
-                <button mat-icon-button (click)="remove(i)">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </span>
-            </div>
-          </mat-list-option>
-        </mat-selection-list>
-      </mat-card-content>
-    </mat-card>
+    <app-items-group name="Items"></app-items-group>
   </div>
   <div class="col-md-8">
 
