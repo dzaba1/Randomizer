@@ -8,6 +8,7 @@ import { FastRandomComponent } from './fast-random/fast-random.component';
 import { RandomService } from './services/random.service';
 import { AppMaterialsModule } from './app-materials.module';
 import { ItemsGroupComponent } from './items-group/items-group.component';
+import { DateTimeService } from './services/date-time.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ItemsGroupComponent } from './items-group/items-group.component';
     AppMaterialsModule,
   ],
   providers: [
-    RandomService
+    RandomService,
+    DateTimeService
   ],
   bootstrap: [AppComponent]
 })
