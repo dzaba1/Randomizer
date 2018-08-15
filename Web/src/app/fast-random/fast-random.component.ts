@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectableItem } from '../model/selectableItem';
 
 @Component({
   selector: 'app-fast-random',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FastRandomComponent implements OnInit {
 
-  public items = new Array<string>();
+  public items = new Array<SelectableItem>();
   public newValue = '';
 
   constructor() { }
@@ -16,7 +17,10 @@ export class FastRandomComponent implements OnInit {
   }
 
   public add() {
-    this.items.push(this.newValue);
+    const newItem = new SelectableItem();
+    newItem.isSelected = true;
+    newItem.name = this.newValue;
+    this.items.push(newItem);
     this.newValue = '';
   }
 

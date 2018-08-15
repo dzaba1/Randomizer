@@ -10,25 +10,25 @@
     </div>
 
     <mat-card>
-      <mat-card-title>Items</mat-card-title>
+      <mat-card-title>
+        <div>
+          <span>Items</span>
+          <span class="float-right mt-1">
+            <mat-checkbox></mat-checkbox>
+          </span>
+        </div>
+      </mat-card-title>
       <mat-card-content>
         <mat-selection-list>
-          <mat-list-option *ngFor="let item of items; index as i">
+          <mat-list-option *ngFor="let item of items; index as i" [selected]="item.isSelected">
             <div>
-              {{item}}
+              <span>{{item.name}}</span>
               <span>
                 <button mat-icon-button (click)="remove(i)">
                   <mat-icon>delete</mat-icon>
                 </button>
               </span>
             </div>
-            <!-- <div class="clearfix">
-              <span>{{item}}</span>
-              
-              <span class="float-right">
-                <button mat-button (click)="add()">Remove</button>
-              </span>
-            </div> -->
           </mat-list-option>
         </mat-selection-list>
       </mat-card-content>

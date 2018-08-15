@@ -5,6 +5,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialModules = [
   BrowserAnimationsModule,
@@ -12,7 +13,8 @@ const MaterialModules = [
   MatListModule,
   MatInputModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatCheckboxModule
 ];
 
 @NgModule({
