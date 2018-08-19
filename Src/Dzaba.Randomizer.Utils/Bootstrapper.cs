@@ -7,6 +7,7 @@
             Require.NotNull(container, nameof(container));
 
             container.Kernel.RegisterTransient<IDateTimeProvider, DateTimeProvider>();
+            container.Kernel.RegisterTransient<IGuidProvider, GuidProvider>();
         }
     }
 }
