@@ -20,6 +20,7 @@ namespace Dzaba.Randomizer.WebApi.Core
 
         public static void RegisterAll(this Containers container)
         {
+            container.RegsiterUtils();
             container.RegisterEntityFrameworkDataAccess();
             container.RegisterSqlite();
             container.RegisterWebApi();
