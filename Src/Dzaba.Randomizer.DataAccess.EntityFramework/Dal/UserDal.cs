@@ -41,5 +41,15 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
                 throw new IdentityException(result.Errors);
             }
         }
+
+        public async Task<User> GetUserByNameAsync(string name)
+        {
+            Require.NotEmpty(name, nameof(name));
+
+            using (var userManager = userManagerFactory())
+            {
+                return await userManager.FindByNameAsync(name);
+            }
+        }
     }
 }

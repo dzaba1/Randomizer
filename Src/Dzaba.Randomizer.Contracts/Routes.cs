@@ -5,6 +5,7 @@
         public const string EnvironmentsControllerRoute = "api/environments";
         public const string GroupsControllerRoute = "api/groups";
         public const string UsersControllerRoute = "api/users";
+        public const string AuthControllerRoute = "api/auth";
 
         public static string BuildEnvironmentRoute(int id)
         {

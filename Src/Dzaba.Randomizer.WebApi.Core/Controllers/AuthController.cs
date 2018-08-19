@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Dzaba.Randomizer.WebApi.Core.Controllers
 {
-    [Route(Routes.UsersControllerRoute)]
-    public class AccountController : Controller
+    [Route(Routes.AuthControllerRoute)]
+    public class AuthController : Controller
     {
         private readonly IUserDal userDal;
         private readonly ITokenGenerator tokenGenerator;
         private readonly IAuth auth;
 
-        public AccountController(IUserDal userDal,
+        public AuthController(IUserDal userDal,
             ITokenGenerator tokenGenerator,
             IAuth auth)
         {
@@ -31,13 +31,29 @@ namespace Dzaba.Randomizer.WebApi.Core.Controllers
             this.auth = auth;
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         [ValidateModel]
         public async Task<IActionResult> Register([FromBody][Required] RegisterUser model)
         {
             try
             {
                 var data = await auth.Register(model.Email, model.Password);
+                return Ok(data);
+            }
+            catch (IdentityException ex)
+            {
+                ModelState.CopyErrorsFrom(ex.Errors);
+                return BadRequest(ModelState);
+            }
+        }
+
+        [HttpPost("login")]
+        [ValidateModel]
+        public async Task<IActionResult> Login([FromBody][Required] LoginUser model)
+        {
+            try
+            {
+                var data = await auth.Login(model.Email, model.Password);
                 return Ok(data);
             }
             catch (IdentityException ex)
