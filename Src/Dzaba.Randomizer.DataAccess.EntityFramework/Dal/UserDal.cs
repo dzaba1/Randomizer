@@ -18,16 +18,17 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
             this.userManagerFactory = userManagerFactory;
         }
 
-        public async Task<long> CreateAsync(string name, string password)
+        public async Task<long> CreateAsync(string email, string password)
         {
-            Require.NotWhiteSpace(name, nameof(name));
+            Require.NotWhiteSpace(email, nameof(email));
             Require.NotWhiteSpace(password, nameof(password));
 
             using (var userManager = userManagerFactory())
             {
                 var entity = new User
                 {
-                    Name = name
+                    Name = email,
+                    Email = email
                 };
 
                 var result = await userManager.CreateAsync(entity);
