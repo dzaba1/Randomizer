@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.Contracts"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.WebApi.Core", "Src\Dzaba.Randomizer.WebApi.Core\Dzaba.Randomizer.WebApi.Core.csproj", "{6AA619CA-0B10-4924-B046-FCCCC3877BB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.WebApi", "Src\Dzaba.Randomizer.WebApi\Dzaba.Randomizer.WebApi.csproj", "{E6A1A494-423B-423A-A5CC-541C81EF9E1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.WebApi", "Src\Dzaba.Randomizer.WebApi\Dzaba.Randomizer.WebApi.csproj", "{E6A1A494-423B-423A-A5CC-541C81EF9E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.WebApi.Jwt", "Src\Dzaba.Randomizer.WebApi.Jwt\Dzaba.Randomizer.WebApi.Jwt.csproj", "{99AEB096-9983-48FD-94A9-C133A45D390E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6A1A494-423B-423A-A5CC-541C81EF9E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99AEB096-9983-48FD-94A9-C133A45D390E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99AEB096-9983-48FD-94A9-C133A45D390E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99AEB096-9983-48FD-94A9-C133A45D390E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99AEB096-9983-48FD-94A9-C133A45D390E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

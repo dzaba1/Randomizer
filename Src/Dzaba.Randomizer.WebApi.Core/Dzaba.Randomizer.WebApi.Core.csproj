@@ -17,16 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\Dzaba.Randomizer.Contracts\Dzaba.Randomizer.Contracts.csproj" />
     <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.Contracts\Dzaba.Randomizer.DataAccess.Contracts.csproj" />
     <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite\Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite.csproj" />
     <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.EntityFramework\Dzaba.Randomizer.DataAccess.EntityFramework.csproj" />
     <ProjectReference Include="..\Dzaba.Randomizer.Utils\Dzaba.Randomizer.Utils.csproj" />
+    <ProjectReference Include="..\Dzaba.Randomizer.WebApi.Jwt\Dzaba.Randomizer.WebApi.Jwt.csproj" />
   </ItemGroup>
 
 </Project>
