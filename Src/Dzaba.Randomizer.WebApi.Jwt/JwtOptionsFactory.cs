@@ -1,5 +1,6 @@
 ﻿using Dzaba.Randomizer.Utils;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Dzaba.Randomizer.WebApi.Jwt
 {
@@ -27,7 +28,8 @@ namespace Dzaba.Randomizer.WebApi.Jwt
                 RequireHttpsMetadata = bool.Parse(configuration["JwtRequireHttpsMetadata"]),
                 ValidIssuer = configuration["JwtIssuer"],
                 ValidAudience = configuration["JwtIssuer"],
-                Key = configuration["JwtKey"]
+                Key = configuration["JwtKey"],
+                Expires = TimeSpan.FromDays(double.Parse(configuration["JwtExpireDays"]))
             };
         }
     }

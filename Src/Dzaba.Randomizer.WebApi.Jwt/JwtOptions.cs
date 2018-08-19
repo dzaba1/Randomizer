@@ -1,4 +1,6 @@
-﻿namespace Dzaba.Randomizer.WebApi.Jwt
+﻿using System;
+
+namespace Dzaba.Randomizer.WebApi.Jwt
 {
     public class JwtOptions
     {
@@ -7,5 +9,6 @@
         public string ValidIssuer { get; set; }
         public string ValidAudience { get; set; }
         public string Key { get; set; }
+        public TimeSpan Expires { get; set; }
     }
 }

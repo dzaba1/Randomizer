@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.WebApi.Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.WebApi", "Src\Dzaba.Randomizer.WebApi\Dzaba.Randomizer.WebApi.csproj", "{E6A1A494-423B-423A-A5CC-541C81EF9E1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dzaba.Randomizer.WebApi.Jwt", "Src\Dzaba.Randomizer.WebApi.Jwt\Dzaba.Randomizer.WebApi.Jwt.csproj", "{99AEB096-9983-48FD-94A9-C133A45D390E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dzaba.Randomizer.WebApi.Jwt", "Src\Dzaba.Randomizer.WebApi.Jwt\Dzaba.Randomizer.WebApi.Jwt.csproj", "{99AEB096-9983-48FD-94A9-C133A45D390E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{92714C77-1BC0-4506-B255-29C815417C5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C2CF5F3-BB2D-4CF7-ADC5-327BDEA7426E} = {92714C77-1BC0-4506-B255-29C815417C5F}
+		{9FDB746C-2186-47D5-B56C-C12C9B5B29EB} = {92714C77-1BC0-4506-B255-29C815417C5F}
+		{D037B0D1-991B-4AAA-AF3A-9AC0F87A40B0} = {92714C77-1BC0-4506-B255-29C815417C5F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {431DA7CB-C06D-490A-ADD6-2B41C8A1BDDA}

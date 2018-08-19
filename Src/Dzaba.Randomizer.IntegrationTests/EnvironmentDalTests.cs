@@ -12,14 +12,14 @@ namespace Dzaba.Randomizer.IntegrationTests
         [Test]
         public async Task Create_WhenEntitiesAreCreated_ThenThoseCanBeAccessed()
         {
-            var creatorId = await CreateTestUserAsync();
+            var creator = await CreateTestUserAsync();
 
             var sut = CreateSut();
 
             var ids = new List<int>();
             for (int i = 0; i < 4; i++)
             {
-                var id = await sut.Create(i.ToString(), creatorId);
+                var id = await sut.Create(i.ToString(), creator.Id);
                 ids.Add(id);
             }
 
@@ -32,7 +32,7 @@ namespace Dzaba.Randomizer.IntegrationTests
                 entity.Id.Should().Be(id);
                 entity.Name.Should().NotBeNullOrWhiteSpace();
                 entity.Users.Length.Should().Be(1);
-                entity.Users[0].Id.Should().Be(creatorId);
+                entity.Users[0].Id.Should().Be(creator.Id);
             }
         }
     }

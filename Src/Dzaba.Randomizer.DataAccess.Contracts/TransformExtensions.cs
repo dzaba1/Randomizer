@@ -21,6 +21,11 @@ namespace Dzaba.Randomizer.DataAccess.Contracts
             };
         }
 
+        public static NamedNavigation<long> ToNamedNavigation(this User user)
+        {
+            return user.ToNamedNavigation(Routes.BuildUserRoute(user.Id));
+        }
+
         public static NamedNavigation<int>[] ToGroupsNavigation(this IEnumerable<Group> groups)
         {
             Require.NotNull(groups, nameof(groups));
@@ -32,7 +37,7 @@ namespace Dzaba.Randomizer.DataAccess.Contracts
         {
             Require.NotNull(users, nameof(users));
 
-            return users.Select(u => u.ToNamedNavigation(Routes.BuildUserRoute(u.Id))).ToArray();
+            return users.Select(u => u.ToNamedNavigation()).ToArray();
         }
     }
 }

@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dzaba.Randomizer.DataAccess.Contracts\Dzaba.Randomizer.DataAccess.Contracts.csproj" />
     <ProjectReference Include="..\Dzaba.Randomizer.Utils\Dzaba.Randomizer.Utils.csproj" />
   </ItemGroup>
 

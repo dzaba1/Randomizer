@@ -1,5 +1,6 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts;
 using Dzaba.Randomizer.DataAccess.Contracts.Dal;
+using Dzaba.Randomizer.DataAccess.Contracts.Model;
 using Ninject;
 using NUnit.Framework;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Dzaba.Randomizer.IntegrationTests
             await sut.InitializeAsync();
         }
 
-        protected Task<long> CreateTestUserAsync()
+        protected Task<User> CreateTestUserAsync()
         {
             var userDal = Container.Get<IUserDal>();
             return userDal.CreateAsync("Test", "aaa");
