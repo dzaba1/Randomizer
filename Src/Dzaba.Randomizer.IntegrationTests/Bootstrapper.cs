@@ -1,5 +1,7 @@
 ﻿using Dzaba.Randomizer.DataAccess.Contracts;
 using Dzaba.Randomizer.Utils;
+using Dzaba.Randomizer.WebApi.Core.Services;
+using Dzaba.Randomizer.WebApi.Jwt;
 using Ninject;
 
 namespace Dzaba.Randomizer.IntegrationTests
@@ -17,6 +19,12 @@ namespace Dzaba.Randomizer.IntegrationTests
         private static void RegisterIntegrationTests(this IKernel container)
         {
             container.RegisterTransient<IConnectionStringProvider, ConnectionStringProvider>();
+            container.Rebind<IJwtOptionsFactory>()
+                .To<JwtOptionsFactory>()
+                .InTransientScope();
+            container.Rebind<ISignInManager>()
+                .To<SignInManager>()
+                .InTransientScope();
         }
     }
 }

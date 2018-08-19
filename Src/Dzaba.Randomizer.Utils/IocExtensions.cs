@@ -2,6 +2,7 @@
 using Ninject;
 using Ninject.Syntax;
 using System;
+using System.Linq;
 
 namespace Dzaba.Randomizer.Utils
 {
@@ -88,6 +89,28 @@ namespace Dzaba.Randomizer.Utils
                     break;
                 default: throw new ArgumentException($"Unknown value of lifetime: {lifetime}", nameof(lifetime));
             }
+        }
+
+        public static void Remove<T>(this IServiceCollection serviceCollection)
+        {
+            Require.NotNull(serviceCollection, nameof(serviceCollection));
+
+            var type = typeof(T);
+            var item = serviceCollection.FirstOrDefault(d => d.ServiceType == type);
+            if (item != null)
+            {
+                serviceCollection.Remove(item);
+            }
+        }
+
+        public static void RegisterTransientOverride<TService, TImpl>(this IServiceCollection serviceCollection)
+            where TImpl : class, TService
+            where TService : class
+        {
+            Require.NotNull(serviceCollection, nameof(serviceCollection));
+
+            serviceCollection.Remove<TService>();
+            serviceCollection.AddTransient<TService, TImpl>();
         }
     }
 }

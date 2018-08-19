@@ -16,6 +16,7 @@ namespace Dzaba.Randomizer.WebApi.Jwt
             Require.NotNull(container, nameof(container));
 
             container.Kernel.RegisterTransient<IJwtOptionsFactory, JwtOptionsFactory>();
+            container.Kernel.RegisterTransient<ITokenGenerator, TokenGenerator>();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             container.ServiceCollection.AddAuthentication(options =>

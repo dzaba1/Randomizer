@@ -9,13 +9,13 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
 {
     internal sealed class UserDal : IUserDal
     {
-        private readonly Func<UserManager<User>> userManagerFactory;
+        private readonly UserManager<User> userManager;
 
-        public UserDal(Func<UserManager<User>> userManagerFactory)
+        public UserDal(UserManager<User> userManager)
         {
-            Require.NotNull(userManagerFactory, nameof(userManagerFactory));
+            Require.NotNull(userManager, nameof(userManager));
 
-            this.userManagerFactory = userManagerFactory;
+            this.userManager = userManager;
         }
 
         public async Task<User> CreateAsync(string email, string password)
@@ -23,33 +23,27 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
             Require.NotWhiteSpace(email, nameof(email));
             Require.NotWhiteSpace(password, nameof(password));
 
-            using (var userManager = userManagerFactory())
+            var entity = new User
             {
-                var entity = new User
-                {
-                    Name = email,
-                    Email = email
-                };
+                Name = email,
+                Email = email
+            };
 
-                var result = await userManager.CreateAsync(entity);
+            var result = await userManager.CreateAsync(entity);
 
-                if (result.Succeeded)
-                {
-                    return entity;
-                }
-
-                throw new IdentityException(result.Errors);
+            if (result.Succeeded)
+            {
+                return entity;
             }
+
+            throw new IdentityException(result.Errors);
         }
 
-        public async Task<User> GetUserByNameAsync(string name)
+        public Task<User> GetUserByNameAsync(string name)
         {
             Require.NotEmpty(name, nameof(name));
 
-            using (var userManager = userManagerFactory())
-            {
-                return await userManager.FindByNameAsync(name);
-            }
+            return userManager.FindByNameAsync(name);
         }
     }
 }

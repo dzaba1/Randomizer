@@ -20,7 +20,6 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework
             container.ServiceCollection.AddDbContext<DatabaseContext>(b => OptionsHandler(container.Kernel, b), ServiceLifetime.Transient, ServiceLifetime.Singleton);
 
             container.Kernel.RegisterFactoryMethod<DatabaseContext>();
-            container.Kernel.RegisterFactoryMethod<UserManager<User>>();
 
             container.ServiceCollection.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<DatabaseContext>()

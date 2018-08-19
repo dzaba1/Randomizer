@@ -1,6 +1,7 @@
 ﻿using Dzaba.Randomizer.DataAccess.EntityFramework;
 using Dzaba.Randomizer.DataAccess.EntityFramework.Sqlite;
 using Dzaba.Randomizer.Utils;
+using Dzaba.Randomizer.WebApi.Core.Services;
 using Dzaba.Randomizer.WebApi.Jwt;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject;
@@ -32,6 +33,8 @@ namespace Dzaba.Randomizer.WebApi.Core
         private static void RegisterWebApi(this Containers container)
         {
             container.Kernel.RegisterSingletonInstance<IServiceProvider>(container.Kernel);
+            container.Kernel.RegisterTransient<IAuth, Auth>();
+            container.Kernel.RegisterTransient<ISignInManager, SignInManager>();
 
             container.ServiceCollection.AddMvc();
         }

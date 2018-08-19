@@ -19,7 +19,7 @@ namespace Dzaba.Randomizer.IntegrationTests
             var ids = new List<int>();
             for (int i = 0; i < 4; i++)
             {
-                var id = await sut.Create(i.ToString(), creator.Id);
+                var id = await sut.Create(i.ToString(), creator.User.Id);
                 ids.Add(id);
             }
 
@@ -32,7 +32,7 @@ namespace Dzaba.Randomizer.IntegrationTests
                 entity.Id.Should().Be(id);
                 entity.Name.Should().NotBeNullOrWhiteSpace();
                 entity.Users.Length.Should().Be(1);
-                entity.Users[0].Id.Should().Be(creator.Id);
+                entity.Users[0].Id.Should().Be(creator.User.Id);
             }
         }
     }
