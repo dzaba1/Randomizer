@@ -18,7 +18,7 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
             this.userManagerFactory = userManagerFactory;
         }
 
-        public async Task<long> CreateAsync(string email, string password)
+        public async Task<User> CreateAsync(string email, string password)
         {
             Require.NotWhiteSpace(email, nameof(email));
             Require.NotWhiteSpace(password, nameof(password));
@@ -35,12 +35,10 @@ namespace Dzaba.Randomizer.DataAccess.EntityFramework.Dal
 
                 if (result.Succeeded)
                 {
-                    return entity.Id;
+                    return entity;
                 }
-                else
-                {
-                    throw new IdentityException(result.Errors);
-                }
+
+                throw new IdentityException(result.Errors);
             }
         }
     }
