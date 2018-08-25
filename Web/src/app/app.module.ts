@@ -10,6 +10,7 @@ import { AppMaterialsModule } from './app-materials.module';
 import { ItemsGroupComponent } from './items-group/items-group.component';
 import { DateTimeService } from './services/date-time.service';
 import { NavComponent } from './nav/nav.component';
+import { LoggingService } from './services/logging.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavComponent } from './nav/nav.component';
   ],
   providers: [
     RandomService,
-    DateTimeService
+    DateTimeService,
+    LoggingService
   ],
   bootstrap: [AppComponent]
 })

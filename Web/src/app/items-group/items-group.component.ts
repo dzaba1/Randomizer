@@ -4,6 +4,7 @@ import { SelectableItem } from '../model/selectableItem';
 import { MatSelectionListChange } from '@angular/material/list';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Require } from '../../utils/require';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-items-group',
@@ -21,9 +22,11 @@ export class ItemsGroupComponent implements OnInit {
   public itemsViewModel = new Array<SelectableItem>();
   public selectAll = new CheckBoxViewModel();
 
-  constructor() { }
+  constructor(private logger: LoggingService) { }
 
   ngOnInit() {
+    this.logger.debug(`Initializing ItemsGroupComponent of name '${this.name}'.`);
+
     if (this.items != null) {
       for (const item of this.items) {
         this.add(item);
@@ -34,10 +37,12 @@ export class ItemsGroupComponent implements OnInit {
   }
 
   public remove(index: number) {
+    this.logger.debug(`ItemsGroupComponent: Removing item of index ${index}.`);
     this.itemsViewModel.splice(index, 1);
   }
 
   public onSelectAllChange(event: MatCheckboxChange) {
+    this.logger.debug(`ItemsGroupComponent: Select all value: ${event.checked}.`);
     for (const item of this.itemsViewModel) {
       item.isSelected = event.checked;
     }
