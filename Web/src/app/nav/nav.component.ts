@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private logger: LoggingService) { }
 
   ngOnInit() {
+    this.logger.debug('Initializing NavComponent');
   }
 
 }

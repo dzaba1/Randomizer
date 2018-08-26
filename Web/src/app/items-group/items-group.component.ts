@@ -37,11 +37,16 @@ export class ItemsGroupComponent implements OnInit {
   }
 
   public remove(index: number) {
+    Require.notNull(index, 'index');
+
     this.logger.debug(`ItemsGroupComponent: Removing item of index ${index}.`);
     this.itemsViewModel.splice(index, 1);
   }
 
   public onSelectAllChange(event: MatCheckboxChange) {
+    Require.notNull(event, 'event');
+    Require.notNull(event.checked, 'event.checked');
+
     this.logger.debug(`ItemsGroupComponent: Select all value: ${event.checked}.`);
     for (const item of this.itemsViewModel) {
       item.isSelected = event.checked;
@@ -49,6 +54,8 @@ export class ItemsGroupComponent implements OnInit {
   }
 
   public refreshSelectAll() {
+    this.logger.debug('ItemsGroupComponent: Refreshing state of select all checkbox.');
+
     let allSelected = true;
     let allNotSelected = true;
 
@@ -70,15 +77,26 @@ export class ItemsGroupComponent implements OnInit {
   }
 
   public onItemSelectionChanged(event: MatSelectionListChange) {
+    Require.notNull(event, 'event');
+    Require.notNull(event.option, 'event.option');
+    Require.notNull(event.option.value, 'event.option.value');
+    Require.notNull(event.option.selected, 'event.option.selected');
+
     const option = event.option;
-    const item = this.itemsViewModel[option.value];
+    const index = option.value as number;
+
+    this.logger.debug(`ItemsGroupComponent: Item of index ${index} changed selection to '${option.selected}'.`);
+
+    const item = this.itemsViewModel[index];
     item.isSelected = option.selected;
 
     this.refreshSelectAll();
   }
 
   public add(value: string) {
-    Require.notNull(value, 'value');
+    Require.notEmptyString(value, 'value');
+
+    this.logger.debug(`ItemsGroupComponent: Adding new item: '${value}'.`);
 
     const viewModel = new SelectableItem();
     viewModel.isSelected = true;
