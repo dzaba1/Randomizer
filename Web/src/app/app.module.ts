@@ -11,13 +11,15 @@ import { ItemsGroupComponent } from './items-group/items-group.component';
 import { DateTimeService } from './services/date-time.service';
 import { NavComponent } from './nav/nav.component';
 import { LoggingService } from './services/logging.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FastRandomComponent,
     ItemsGroupComponent,
-    NavComponent
+    NavComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
