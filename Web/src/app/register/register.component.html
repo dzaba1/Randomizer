@@ -1,9 +1,13 @@
 <h1>Register</h1>
-<form class="app-form-column">
+<form class="d-flex flex-column col-md-5 mt-3">
   <mat-form-field>
-    <input matInput placeholder="Email">
+    <input name="email" matInput type="email" placeholder="Email" [(ngModel)]="email">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Password">
+    <input name="password" matInput type="password" placeholder="Password" [(ngModel)]="password">
   </mat-form-field>
+  <mat-form-field>
+    <input name="confirmPassword" matInput type="password" placeholder="Confirm password" [(ngModel)]="confirmPassword">
+  </mat-form-field>
+  <button class="align-self-center" mat-raised-button color="primary">Register</button>
 </form>

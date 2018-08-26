@@ -8,6 +8,10 @@ import { LoggingService } from '../services/logging.service';
 })
 export class RegisterComponent implements OnInit {
 
+  public email: string;
+  public password: string;
+  public confirmPassword: string;
+
   constructor(private logger: LoggingService) { }
 
   ngOnInit() {
