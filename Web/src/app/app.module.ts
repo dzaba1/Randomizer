@@ -12,6 +12,7 @@ import { DateTimeService } from './services/date-time.service';
 import { NavComponent } from './nav/nav.component';
 import { LoggingService } from './services/logging.service';
 import { RegisterComponent } from './register/register.component';
+import { ConfirmValidatorDirective } from './validators/confirm-validator.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegisterComponent } from './register/register.component';
     FastRandomComponent,
     ItemsGroupComponent,
     NavComponent,
-    RegisterComponent
+    RegisterComponent,
+    ConfirmValidatorDirective
   ],
   imports: [
     BrowserModule,

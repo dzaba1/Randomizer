@@ -14,7 +14,11 @@
     <mat-error *ngIf="passwordControl.invalid && passwordControl.errors.required">The password is required</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input name="confirmPassword" matInput type="password" placeholder="Confirm password" [(ngModel)]="confirmPassword">
+    <input #confirmPasswordControl="ngModel" name="confirmPassword" matInput
+      type="password" placeholder="Confirm password" [(ngModel)]="confirmPassword"
+      required [appConfirms]="passwordControl">
+      <mat-error *ngIf="confirmPasswordControl.invalid && confirmPasswordControl.errors.required">The password must be confirmed</mat-error>
+      <mat-error *ngIf="confirmPasswordControl.invalid && confirmPasswordControl.errors.appConfirms">The password doesn't match</mat-error>
   </mat-form-field>
   <button class="align-self-center" mat-raised-button color="primary" [disabled]="!registerForm.form.valid">Register</button>
 </form>
