@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   public email: string;
   public password: string;
   public confirmPassword: string;
+  public longOperation = false;
 
   constructor(private logger: LoggingService) { }
 
@@ -18,4 +19,7 @@ export class RegisterComponent implements OnInit {
     this.logger.debug('Initializing RegisterComponent');
   }
 
+  public async register() {
+    this.longOperation = true;
+  }
 }
