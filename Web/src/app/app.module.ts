@@ -15,6 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { ConfirmValidatorDirective } from './validators/confirm-validator.directive';
 import { AuthService } from './services/auth.service';
 import { NavigationService } from './services/navigation.service';
+import { CookieService } from 'ngx-cookie-service';
+import { UserCacheService } from './services/user-cache.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NavigationService } from './services/navigation.service';
     DateTimeService,
     LoggingService,
     AuthService,
-    NavigationService
+    NavigationService,
+    CookieService,
+    UserCacheService
   ],
   bootstrap: [AppComponent]
 })
