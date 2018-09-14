@@ -13,6 +13,8 @@ import { NavComponent } from './nav/nav.component';
 import { LoggingService } from './services/logging.service';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmValidatorDirective } from './validators/confirm-validator.directive';
+import { AuthService } from './services/auth.service';
+import { NavigationService } from './services/navigation.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ConfirmValidatorDirective } from './validators/confirm-validator.direct
   providers: [
     RandomService,
     DateTimeService,
-    LoggingService
+    LoggingService,
+    AuthService,
+    NavigationService
   ],
   bootstrap: [AppComponent]
 })

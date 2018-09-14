@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="/">Randomizer</a>
 
-  <ul class="nav navbar-nav ml-auto">
+  <ul class="nav navbar-nav ml-auto" *ngIf="!isLogged">
     <li><a routerLink="/register">Register</a></li>
+  </ul>
+  <ul class="nav navbar-nav ml-auto" *ngIf="isLogged">
+    <li><a href="#" (click)="logOut()">Log out</a></li>
   </ul>
 </nav>
