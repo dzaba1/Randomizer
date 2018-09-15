@@ -1,0 +1,19 @@
+<h1>Login</h1>
+<div class="row mt-3">
+  <form class="d-flex flex-column col-md-5" #loginForm="ngForm">
+    <mat-form-field>
+      <input #emailControl="ngModel" name="email" matInput type="email" placeholder="Email" [(ngModel)]="email" required email>
+      <mat-error *ngIf="emailControl.invalid && emailControl.errors.required">The email is required</mat-error>
+      <mat-error *ngIf="emailControl.invalid && emailControl.errors.email">The provided email is invalid</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input #passwordControl="ngModel" name="password" matInput type="password" placeholder="Password" [(ngModel)]="password"
+        required>
+      <mat-error *ngIf="passwordControl.invalid && passwordControl.errors.required">The password is required</mat-error>
+    </mat-form-field>
+    <button class="align-self-center" mat-raised-button color="primary" [disabled]="!loginForm.form.valid || longOperation" (click)="login()">Login</button>
+  </form>
+  <div class="d-flex flex-column col-md-1 justify-content-center" *ngIf="longOperation">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

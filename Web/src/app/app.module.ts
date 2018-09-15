@@ -17,6 +17,7 @@ import { AuthService } from './services/auth.service';
 import { NavigationService } from './services/navigation.service';
 import { CookieService } from 'ngx-cookie-service';
 import { UserCacheService } from './services/user-cache.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserCacheService } from './services/user-cache.service';
     ItemsGroupComponent,
     NavComponent,
     RegisterComponent,
-    ConfirmValidatorDirective
+    ConfirmValidatorDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

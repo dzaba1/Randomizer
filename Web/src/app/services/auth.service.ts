@@ -18,7 +18,14 @@ export class AuthService {
     Require.notEmptyString(password, 'password');
 
     this.logger.debug(`Registering ${email}`);
+    const mock = this.getMock(email);
 
+    this.userCache.save(mock);
+    this.logger.debug(`Registered ${email}`);
+    return mock;
+  }
+
+  private getMock(email: string): UserInfo {
     const mock = new UserInfo();
     mock.user = new NamedNavigation<number>();
     mock.user.name = email;
@@ -28,9 +35,6 @@ export class AuthService {
     const expires = new Date();
     expires.setMonth(expires.getMonth() + 1);
     mock.tokenData.expires = expires.toString();
-
-    this.userCache.save(mock);
-    this.logger.debug(`Registered ${email}`);
     return mock;
   }
 
@@ -42,5 +46,17 @@ export class AuthService {
     this.logger.debug('Logging out');
     this.userCache.invalidate();
     this.logger.debug('Logged out');
+  }
+
+  public async login(email: string, password: string): Promise<UserInfo> {
+    Require.notEmptyString(email, 'email');
+    Require.notEmptyString(password, 'password');
+
+    this.logger.debug(`Logging in ${email}`);
+    const mock = this.getMock(email);
+
+    this.userCache.save(mock);
+    this.logger.debug(`Logged in ${email}`);
+    return mock;
   }
 }
