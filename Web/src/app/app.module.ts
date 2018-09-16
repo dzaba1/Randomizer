@@ -18,6 +18,8 @@ import { NavigationService } from './services/navigation.service';
 import { CookieService } from 'ngx-cookie-service';
 import { UserCacheService } from './services/user-cache.service';
 import { LoginComponent } from './login/login.component';
+import { NotificationService } from './services/notification.service';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     AppRoutingModule,
     AppMaterialsModule,
+    NotifierModule
   ],
   providers: [
     RandomService,
@@ -42,7 +45,8 @@ import { LoginComponent } from './login/login.component';
     AuthService,
     NavigationService,
     CookieService,
-    UserCacheService
+    UserCacheService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
