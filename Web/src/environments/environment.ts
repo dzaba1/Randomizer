@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  userCacheName: 'randomizerUserInfo'
+  userCacheName: 'randomizerUserInfo',
+  cookieBoxName: 'randomizerCookieBox'
 };
 
 /*

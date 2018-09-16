@@ -18,12 +18,16 @@ export class CookieCache<T> {
         return this.cookies.check(this._name);
     }
 
-    public save(data: T, expires: Date) {
+    public save(data: T, expires?: Date) {
         Require.notNull(data, 'data');
-        Require.notNull(expires, 'expires');
 
         const json = JSON.stringify(data);
-        this.cookies.set(this._name, json, expires);
+
+        if (expires != null) {
+            this.cookies.set(this._name, json, expires);
+        } else {
+            this.cookies.set(this._name, json);
+        }
     }
 
     public get(): T {

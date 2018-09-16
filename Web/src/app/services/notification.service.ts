@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { Require } from '../../utils/require';
+import { LoggingService } from './logging.service';
 
 export enum NotificationType {
   Default, Success, Info, Warning, Error
@@ -11,13 +12,16 @@ export enum NotificationType {
 })
 export class NotificationService {
 
-  constructor(private notifierService: NotifierService) { }
+  constructor(private notifierService: NotifierService,
+    private logger: LoggingService) { }
 
   public show(msg: string, type: NotificationType) {
     Require.notEmptyString(msg, 'msg');
     Require.notNull(type, 'type');
 
-    this.notifierService.notify(this.toType(type), msg);
+    const typeStr = this.toType(type);
+    this.logger.debug(`Displaying notification '${msg}' of type '${typeStr}'`);
+    this.notifierService.notify(typeStr, msg);
   }
 
   private toType(type: NotificationType): string {

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  userCacheName: 'randomizerUserInfo'
+  userCacheName: 'randomizerUserInfo',
+  cookieBoxName: 'randomizerCookieBox'
 };
