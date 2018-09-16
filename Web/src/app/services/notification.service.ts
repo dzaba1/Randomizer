@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { NotifierService } from 'angular-notifier';
 import { Require } from '../../utils/require';
 import { LoggingService } from './logging.service';
+import { ToastrService, ActiveToast } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 export enum NotificationType {
-  Default, Success, Info, Warning, Error
+  Success, Info, Warning, Error
 }
 
 @Injectable({
@@ -12,32 +13,32 @@ export enum NotificationType {
 })
 export class NotificationService {
 
-  constructor(private notifierService: NotifierService,
+  constructor(private toastr: ToastrService,
     private logger: LoggingService) { }
 
-  public show(msg: string, type: NotificationType) {
+  public show(msg: string, type: NotificationType): Observable<any> {
     Require.notEmptyString(msg, 'msg');
     Require.notNull(type, 'type');
 
-    const typeStr = this.toType(type);
-    this.logger.debug(`Displaying notification '${msg}' of type '${typeStr}'`);
-    this.notifierService.notify(typeStr, msg);
-  }
+    this.logger.debug(`Displaying notification '${msg}' of type '${type}'`);
+    let toast: ActiveToast<any>;
 
-  private toType(type: NotificationType): string {
     switch (type) {
-      case NotificationType.Default:
-        return 'default';
       case NotificationType.Error:
-        return 'error';
+        toast = this.toastr.error(msg);
+        break;
       case NotificationType.Info:
-        return 'info';
+        toast = this.toastr.info(msg);
+        break;
       case NotificationType.Success:
-        return 'success';
+        toast = this.toastr.success(msg);
+        break;
       case NotificationType.Warning:
-        return 'warning';
+        toast = this.toastr.warning(msg);
+        break;
+      default: throw new RangeError(`Unknown type: '${type}'`);
     }
 
-    throw new RangeError(`Unknown type: ${type}`);
+    return toast.onHidden;
   }
 }

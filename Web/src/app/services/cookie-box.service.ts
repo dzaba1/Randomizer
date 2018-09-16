@@ -20,11 +20,10 @@ export class CookieBoxService {
 
   public checkAndShow() {
     this.logger.debug('Checking the cookie box.');
-    this.cookieCache.invalidate();
     if (!this.cookieCache.isStored) {
       this.logger.debug('Displaying the cookie box.');
-      this.notificationService.show('Cookies', NotificationType.Default);
-      this.cookieCache.save(true);
+      this.notificationService.show('Cookies', NotificationType.Warning)
+        .subscribe(() => this.cookieCache.save(true));
     }
   }
 }
